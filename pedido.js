@@ -1,5 +1,14 @@
 // Pedido: carrito y pedido nuevo (WhatsApp)
 // ===== PEDIDO (guarda cliente, venta y detalle en la base) =====
+// Abre WhatsApp: en celular abre la APP directo; en PC usa wa.me
+const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+function abrirWa(msg, ventana) {
+  const t = encodeURIComponent(msg), n = wa(), web = `https://wa.me/${n}?text=${t}`;
+  if (!esMovil) { if (ventana) ventana.location.href = web; else window.open(web, "_blank"); return; }
+  location.href = `whatsapp://send?phone=${n}&text=${t}`;
+  setTimeout(() => { if (!document.hidden) location.href = web; }, 1800); // si no hay app, abre la web
+}
+
 $("btnCarrito").addEventListener("click", () => {
   const [c, t] = totales(); let h = "";
   if (!c) h = "<p>Aún no agregaste productos.</p>";
@@ -17,7 +26,7 @@ $("opcionesPago").addEventListener("click", e => { const b = e.target.closest(".
 $("btnEnviar").addEventListener("click", async () => {
   const [c, t] = totales(), pago = pagoSel;
   if (!c) { alert("Agrega productos al carrito primero."); return; }
-  const w = window.open("", "_blank"); let id = "";
+  const w = esMovil ? null : window.open("", "_blank"); let id = "";
   if (K) {
     try { id = await api("rpc/crear_pedido", "POST", {p_nombre: "Cliente web", p_telefono: "-", p_metodo: pago, p_items: Object.keys(carrito).map(k => ({id: productos[k].id, cantidad: carrito[k]}))}); }
     catch (er) { if (w) w.close(); alert("No se pudo registrar el pedido (¿sin stock?). Intenta de nuevo."); await recargar(); return; }
@@ -28,8 +37,7 @@ $("btnEnviar").addEventListener("click", async () => {
     msg += `🎁 *${x.n}*\n    Cantidad: ${q} × Bs ${x.p} = *Bs ${q * x.p}*\n`;
   });
   msg += `\n⭐ *TOTAL: Bs ${t}*\n${pago === "QR" ? "📲" : "💵"} Forma de pago: *${pago === "QR" ? "QR" : "Efectivo"}*\n\n❄️ ¡Gracias y Feliz Navidad! 🎅🎄`;
-  const url = `https://wa.me/${wa()}?text=${encodeURIComponent(msg)}`;
-  if (w) w.location.href = url; else location.href = url;
+  abrirWa(msg, w);
   carrito = {}; modalPedido.hide(); await recargar();
 });
 
@@ -38,6 +46,6 @@ $("btnNuevoPedido").addEventListener("click", () => {
   const d = $("nuevoDesc").value.trim(), n = $("nuevoNombre").value.trim();
   if (!d) { aviso("Escribe qué producto quieres."); return; }
   const msg = `🆕 *PEDIDO NUEVO*\n${n ? "👤 Nombre: " + n + "\n" : ""}📝 Producto: ${d}`;
-  window.open(`https://wa.me/${wa()}?text=${encodeURIComponent(msg)}`, "_blank");
+  abrirWa(msg);
   $("nuevoDesc").value = ""; $("nuevoNombre").value = "";
 });
