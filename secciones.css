@@ -1,0 +1,29 @@
+/* Secciones: catálogo grande, portada, marcas */
+/* ===== Catálogo más grande ===== */
+.catalogo-grande{padding-top:3rem!important;padding-bottom:3rem!important}
+@media(min-width:992px){.catalogo-grande #lista>.col-12{width:50%}}
+.marcas{font-size:1.3rem;margin-top:2rem}
+#carrusel{border-radius:28px}
+
+/* ===== Estructura mejorada ===== */
+.hero{background:linear-gradient(160deg,#165b33,#0e3d23 60%,#b3202a);color:#fff;padding:48px 0 54px;border-radius:0 0 32px 32px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.hero-emoji{font-size:3.5rem}
+.hero-titulo{font-family:'Mountains of Christmas',cursive;color:var(--oro);font-size:clamp(2.2rem,8vw,3.6rem)}
+.sub{opacity:.8;margin-bottom:1.2rem}
+.chips-barra{position:sticky;top:62px;z-index:20;background:var(--bg1);padding:8px 0;border-radius:0 0 14px 14px}
+.marcas-band{background:var(--verde);color:#fff;border-top:4px solid var(--oro);border-bottom:4px solid var(--oro)}
+section{scroll-margin-top:70px}
+#galeria #carrusel{border-radius:24px}
+.marcas-texto{margin:0;font-size:1.3rem;font-weight:700;color:#fff}
+/* El botón del carrito (fijo abajo) no tapa el pie de página */
+footer{padding-bottom:5.5rem!important}
+.chip-grupo{display:inline-flex;align-items:center}
+.chip-x{border:0;background:#b3202a;color:#fff;border-radius:50%;width:22px;height:22px;font-size:.7rem;line-height:1;margin-left:-6px;margin-right:4px;cursor:pointer}
+/* Tarjetas compactas: foto a la izquierda, datos a la derecha */
+.catalogo-grande .producto .img{flex:0 0 40%;max-width:200px;font-size:3rem}
+.catalogo-grande .producto h6{font-size:1.1rem}
+.catalogo-grande .precio{font-size:1.5rem}
+/* Modo admin: toda la foto es un botón para subir imagen; tarjeta "Agregar producto" */
+.producto .img-admin{cursor:pointer}
+.img-hint{position:absolute;left:6px;right:6px;bottom:6px;background:#000b;color:#fff;border-radius:10px;padding:4px 6px;font-size:.8rem;font-weight:700;text-align:center}
+.agregar-card{width:100%;border:3px dashed var(--chip);background:transparent;color:var(--chip);border-radius:18px;padding:18px;font-weight:800;font-size:1.15rem}

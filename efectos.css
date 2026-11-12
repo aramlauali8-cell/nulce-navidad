@@ -1,0 +1,5 @@
+/* Efectos: copos y referencia */
+/* ===== Copos al tocar botones ===== */
+.copo{position:fixed;z-index:3000;pointer-events:none;color:#9bd8ff;text-shadow:0 0 3px #fff,0 0 6px #4aa8e8;transform:translate(-50%,-50%);animation:salir .9s ease-out forwards}
+@keyframes salir{from{opacity:1;transform:translate(-50%,-50%) scale(.6)}to{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(200deg) scale(1.1)}}
+.ref-mini{background:#ffffff1c;border:1px solid #f2c14e;border-radius:20px;padding:3px 12px;font-size:.9rem}
