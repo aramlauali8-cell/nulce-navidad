@@ -5,8 +5,8 @@ const NUMERO_REFERENCIA = "77579228";     // número de referencia (se muestra e
 const QR_IMAGEN = "";                     // opcional: ruta de tu imagen QR de pago, ej: "qr.png"
 const CODIGO_ADMIN_1 = "100409";       // primera contraseña
 const CODIGO_ADMIN_2 = "251208";       // segunda contraseña
-const SUPABASE_URL = "";                  // pega tu Project URL (sin / al final)
-const SUPABASE_KEY = "";                  // pega tu clave anon public (empieza con eyJ)
+const SUPABASE_URL = "https://befamnapfpxpxasbcdgp.supabase.co";                  // pega tu Project URL (sin / al final)
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJlZmFtbmFwZnB4cHhhc2JjZGdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ0NDMyMDIsImV4cCI6MjExMDAxOTIwMn0.vWO5hspc9gGwcUs8_euKRE_Xp6fH973R-5OhbP4iei0";                  // pega tu clave anon public (empieza con eyJ)
 
 // Datos de ejemplo: se usan mientras no conectes Supabase.
 const CATS = [["Panetones", "🎄"], ["Galletas", "🍪"], ["Dulces", "🍬"], ["Otros", "🎁"]]; // botones del catálogo (en modo admin puedes agregar más)
